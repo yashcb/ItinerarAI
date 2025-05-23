@@ -1,4 +1,4 @@
-import requests
+import aiohttp
 from typing import Dict, Any
 import os
 from dotenv import load_dotenv
@@ -10,9 +10,9 @@ OPENWEATHER_API_KEY = os.getenv("OPENWEATHER_API_KEY")
 if not OPENWEATHER_API_KEY:
     raise ValueError("OPENWEATHER_API_KEY environment variable is not set")
 
-def get_weather_data(latitude: float, longitude: float) -> Dict[str, Any]:
+async def get_weather_data(latitude: float, longitude: float) -> Dict[str, Any]:
     """
-    Get weather data from OpenWeatherMap API.
+    Get weather data from OpenWeatherMap API asynchronously.
     
     Args:
         latitude (float): Latitude coordinate
@@ -26,9 +26,12 @@ def get_weather_data(latitude: float, longitude: float) -> Dict[str, Any]:
 
     url = f"https://api.openweathermap.org/data/2.5/weather?lat={latitude}&lon={longitude}&appid={OPENWEATHER_API_KEY}&units=metric"
     
-    try:
-        response = requests.get(url)
-        response.raise_for_status()
-        return response.json()
-    except requests.RequestException as e:
-        raise Exception(f"Failed to fetch weather data: {str(e)}")
+    async with aiohttp.ClientSession() as session:
+        try:
+            async with session.get(url) as response:
+                response.raise_for_status()
+                return await response.json()
+        except aiohttp.ClientError as e:
+            raise Exception(f"Failed to fetch weather data: {str(e)}")
+        except Exception as e:
+            raise Exception(f"Unexpected error: {str(e)}")

@@ -15,15 +15,373 @@
   --gradient-accent: linear-gradient(135deg, #e8e2ff 0%, #f0f9ff 100%);
 }
 
+/* Form Container */
+.search-form {
+  max-width: 400px;
+  width: 85%;
+  margin: 0 auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Form Groups */
+.form-group {
+  margin-bottom: 1.5rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-color);
+  opacity: 0.9;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"] {
+  width: 100%;
+  max-width: 100%;
+  padding: 1rem 1.25rem;
+  font-size: 1rem;
+  color: var(--text-color);
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(99, 102, 241, 0.3);
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-sm);
+  box-sizing: border-box;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="date"]:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.form-group input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.5);
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s;
+}
+
+.form-group input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  background-color: rgba(99, 102, 241, 0.1);
+}
+
+/* Trip Type Dropdown Styles */
+.select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.trip-type-select {
+  width: 100%;
+  max-width: 100%;
+  padding: 1rem 1.25rem;
+  font-size: 1rem;
+  color: var(--text-color);
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(99, 102, 241, 0.3);
+  border-radius: 0.75rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-sm);
+  box-sizing: border-box;
+}
+
+.trip-type-select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.select-arrow {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--primary-color);
+  font-size: 0.75rem;
+}
+
+/* Style the dropdown options */
+.trip-type-select option {
+  padding: 0.75rem 1.25rem;
+  background: var(--card-background);
+  color: var(--text-color);
+  font-size: 0.95rem;
+}
+
+/* Hover effect for options */
+.trip-type-select option:hover {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.75rem 1.25rem;
+}
+
+/* Custom scrollbar for the dropdown */
+.trip-type-select::-webkit-scrollbar {
+  width: 8px;
+}
+
+.trip-type-select::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.trip-type-select::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+.trip-type-select::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
+}
+
+/* Gradient Text */
 .gradient-text {
   background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-  background-clip: text;
   -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
   color: transparent;
   font-size: 2.5rem;
   margin-bottom: 2rem;
   text-align: center;
   font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+}
+
+/* Results Container */
+.results-container {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  margin-top: 2rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.tab {
+  flex: 1;
+  padding: 1rem;
+  border: none;
+  background: none;
+  color: var(--text-color);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+}
+
+.tab:hover {
+  background: rgba(99, 102, 241, 0.1);
+  opacity: 1;
+}
+
+.tab.active {
+  border-bottom: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  opacity: 1;
+  font-weight: 600;
+}
+
+.tab svg {
+  font-size: 1rem;
+}
+
+/* Tab Content */
+.tab-content {
+  padding: 1.5rem;
+}
+
+/* Info Card */
+.info-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.info-card h2 {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.35rem;
+}
+
+.info-card p {
+  margin: 0.75rem 0;
+  line-height: 1.6;
+}
+
+.info-card p strong {
+  color: var(--primary-color);
+  margin-right: 0.5rem;
+}
+
+/* Weather Grid */
+.weather-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.weather-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.weather-label {
+  display: block;
+  font-size: 0.85rem;
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.weather-value {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+/* Itinerary Container */
+.itinerary-container {
+  line-height: 1.8;
+}
+
+.itinerary-container h2,
+.itinerary-container h3,
+.itinerary-container h4 {
+  color: var(--primary-color);
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+}
+
+.itinerary-container p {
+  margin: 1em 0;
+}
+
+.itinerary-container ul,
+.itinerary-container ol {
+  margin: 1em 0;
+  padding-left: 1.5em;
+}
+
+.itinerary-container li {
+  margin-bottom: 0.5em;
+}
+
+.itinerary-container strong {
+  color: var(--primary-color);
+}
+
+/* Markdown Content */
+.markdown-content {
+  color: var(--text-color);
+}
+
+.markdown-content a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.markdown-content a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* Error Message */
+.error-message {
+  background: rgba(244, 63, 94, 0.1);
+  color: var(--error-color);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-left: 3px solid var(--error-color);
+}
+
+.error-message svg {
+  flex-shrink: 0;
+}
+
+/* Loading State */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 2rem 0;
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .tabs {
+    flex-direction: column;
+  }
+  
+  .tab {
+    justify-content: flex-start;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .weather-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .weather-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .gradient-text {
+    font-size: 2rem;
+  }
 }
 
 body {
@@ -309,29 +667,42 @@ input:focus {
 }
 
 button {
-  padding: 0.75rem 2rem;
-  background-color: var(--primary-color);
+  width: 100%;
+  padding: 1rem;
+  background: var(--gradient-primary);
   color: white;
   border: none;
-  border-radius: 0.5rem;
-  font-size: 1rem;
+  border-radius: 0.75rem;
+  font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
+  margin-top: 0.5rem;
+  border: 2px solid transparent;
 }
 
-button:hover {
-  background-color: var(--secondary-color);
-  transform: translateY(-1px);
+button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
 }
 
 button:disabled {
-  background-color: #e5e7eb;
+  opacity: 0.7;
   cursor: not-allowed;
-  opacity: 0.8;
+  transform: none !important;
+  box-shadow: none !important;
+  background: rgba(99, 102, 241, 0.5);
 }
 
 .error {
